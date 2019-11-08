@@ -63,7 +63,7 @@ class Image(models.Model):
         return gallery
 
     def __str__(self):
-        return self.name
+        return self.post
 
     def save_image(self):
         self.save()

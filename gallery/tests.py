@@ -8,6 +8,25 @@ from .models import Image, Category, Location
 # Create your tests here.
 
 
+class ImageTestClass(TestCase):
+
+    def setUp(self):
+        self.hiro = Image('Post message','image.jpeg',)
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image, Image))
+
+    def test_save_method(self):
+        self.image.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) > 0)
+
+    def test_delete_method(self):
+
+        self.image.save_image()
+        self.image.delete_image()
+
+
 class CategoryTestClass(TestCase):
     def setUp(self):
         self.techno = Category(category='techno')

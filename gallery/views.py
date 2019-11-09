@@ -30,3 +30,17 @@ def search_results(request):
         message = 'There are no results. Enter a search query.'
 
         return render(request, 'all-gallery/search.html', {'message': message})
+
+
+def filter_by_location(request, location_id):
+    images = Image.filter_by_location(id=location_id)
+    return render(request, 'all-gallery/location.html', {'images': images})
+
+
+def convert_dates(dates):
+    day_number = dt.date.weekday(dates)
+    days = ['Monday', 'Tuesday', 'Wednesday',
+            'Thursday', 'Friday', 'Saturday', 'Sunday']
+    day = days[day_number]
+
+    return day

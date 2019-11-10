@@ -1,39 +1,54 @@
-{% load bootstrap4 %}
-{% load static%}
+{% load bootstrap4 %}{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8"> {% if title %}
+    <title>Welcome | Gallery - {{title}}</title>
+    {% else %}
+    <title> Welcome | Gallery </title>
+    {% endif %} {% block styles %} {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-  {% if title %}
-  <title> {{title}}</title>
-  {% else %}
-  <title> PERSONAL GALLERY </title>
-  {% endif %}
+    <!-- bootstrap css -->
 
-  {% block styles %}
-  {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link href="https://fonts.googleapis.com/css?family=Cinzel|Libre+Baskerville|Merienda|ZCOOL+XiaoWei" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Akronim" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Akronim|Lobster" rel="stylesheet">
-  {% endblock %}
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Josefin+Slab|Open+Sans+Condensed:300|Yanone+Kaffeesatz&display=swap" rel="stylesheet">{% endblock %}
 </head>
 
-<body>
-  {% include "navbar.html" %}
+<body class="back">
+    {% include "navbar.html" %}
+    <div class="container">
+        {% block content %}{% endblock %} {% block scripts %}
+        <script type="text/javascript" src="{{ STATIC_URL }} /static/js/jquery-3.4.1.js">
+        </script>
+        <script type="text/javascript" src="{{ STATIC_URL }} /static/js/scripts.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        {% bootstrap_javascript %} {% endblock %}
+    </div>
 
-  {% block content %}
 
-  {%endblock%}
 
-  {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
-  {% bootstrap_javascript %}
-  {% endblock %}
+    <script>
+        function copy(element) {
+            $(element).select();
+            document.execCommand("copy");
+        }
+    </script>
+
+    <footer class="page-footer">
+
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 sticky-bottom foot">Created by BranTech © 2019 Copyright:
+
+        </div>
+        <!-- Copyright -->
+
+    </footer>
 </body>
 
 </html>

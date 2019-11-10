@@ -1,75 +1,88 @@
 from django.db import models
 
-
 # Create your models here.
-class Location(models.Model):
 
-    '''
-    locations model
-    '''
-    location = models.CharField(max_length=120)
+
+class Location(models.Model):
+    location_name = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.location
+        return self.location_name
 
     def save_location(self):
-        self.save()
+        self.save
 
     def delete_location(self):
-        self.delete()
+        self.delete
+
+    def update_location(self):
+        self.update
+
+    @classmethod
+    def update_location(cls, id, value):
+        cls.objects.filter(id=id).update(location_name=value)
 
 
 class Category(models.Model):
-
-    '''
-    Photo category model
-    '''
-
-    image_category = models.CharField(max_length=120)
+    category_name = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.image_category
+        return self.category_name
 
     def save_category(self):
-        self.save()
+        self.save
 
     def delete_category(self):
-        self.delete()
+        self.delete
+
+    def update_category(self):
+        self.update
+
+    @classmethod
+    def update_category(cls, id, value):
+        cls.objects.filter(id=id).update(category_name=value)
 
 
 class Image(models.Model):
-
-    '''
-    Images model
-    '''
-
-    image_path = models.ImageField(upload_to='images/')
-    image_name = models.CharField(max_length=120, blank=False)
-    description = models.TextField(max_length=200, blank=True)
-    category = models.ForeignKey(Category)
-    location = models.ForeignKey(Location, blank=True)
+    image_name = models.CharField(max_length=20)
+    image_description = models.TextField(max_length=60)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.image_name
 
     def save_image(self):
-        self.save()
+        self.save
 
     def delete_image(self):
-        self.delete()
+        self.delete
+
+    class Meta:
+        ordering = ['image_name']
 
     @classmethod
-    def get_all(cls):
+    def get_all_images(cls):
         images = cls.objects.all()
         return images
 
     @classmethod
-    def search_image(cls, search_category):
-        images = cls.objects.filter(
-            category__image_category__icontains=search_category)
-        return images
+    def update_image(cls, id, value):
+        cls.objects.filter(id=id).update(image=value)
 
     @classmethod
-    def filter_by_location(cls):
-        images = cls.objects.order_by('location')
-        return images
+    def get_image_by_id(cls, search_term):
+        image = cls.objects.filter(image__image_id__icontains=search_term)
+        return image
+
+    @classmethod
+    def filter_by_location(cls, search_term):
+        locations = cls.objects.filter(
+            location__location_name__icontains=search_term)
+        return locations
+
+    @classmethod
+    def search_by_category(cls, location):
+        photos = cls.objects.filter(category__icontains=search_term)
+        return photos

@@ -3,8 +3,10 @@ autopep8==1.4.4
 backports.functools-lru-cache==1.6.1
 beautifulsoup4==4.8.1
 configparser==4.0.2
+dj-database-url==0.5.0
 Django==1.11
 django-bootstrap4==1.0.1
+django-heroku==0.3.1
 enum34==1.1.6
 isort==4.3.21
 lazy-object-proxy==1.4.3
@@ -12,8 +14,12 @@ mccabe==0.6.1
 psycopg2==2.8.4
 pycodestyle==2.5.0
 pylint==1.9.5
+python-decouple==3.1
+python-dotenv==0.10.3
 pytz==2019.3
 singledispatch==3.4.0.3
 six==1.13.0
 soupsieve==1.9.5
+typing==3.7.4.1
+whitenoise==4.1.4
 wrapt==1.11.2

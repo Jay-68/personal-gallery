@@ -7,7 +7,7 @@ class Location(models.Model):
     '''
     locations model
     '''
-    location = models.CharField(max_length=30)
+    location = models.CharField(max_length=120)
 
     def __str__(self):
         return self.location
@@ -44,7 +44,7 @@ class Image(models.Model):
     '''
 
     image_path = models.ImageField(upload_to='images/')
-    image_name = models.CharField(max_length=30, blank=False)
+    image_name = models.CharField(max_length=120, blank=False)
     description = models.TextField(max_length=200, blank=True)
     category = models.ForeignKey(Category)
     location = models.ForeignKey(Location, blank=True)

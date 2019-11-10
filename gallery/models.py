@@ -1,36 +1,16 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models
-import datetime
+
 
 # Create your models here.
-
-
-class Category(models.Model):
-    category = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.category
-
-    class Meta:
-        ordering = ['category']
-
-    def save_category(self):
-        self.save()
-
-    def delete_category(self):
-        self.delete()
-
-
 class Location(models.Model):
+
+    '''
+    locations model
+    '''
     location = models.CharField(max_length=30)
 
     def __str__(self):
         return self.location
-
-    class Meta:
-        ordering = ['location']
 
     def save_location(self):
         self.save()
@@ -39,34 +19,57 @@ class Location(models.Model):
         self.delete()
 
 
-class Image(models.Model):
-    post = models.TextField()
-    image = models.ImageField(upload_to='images/')
-    pub_date = models.DateTimeField(auto_now_add=True)
-    description = models.TextField()
-    category = models.ForeignKey(Category)
-    location = models.ForeignKey(Location)
+class Category(models.Model):
 
-    @classmethod
-    def get_all_images(cls):
-        image = cls.objects.all()
-        return image
+    '''
+    Photo category model
+    '''
 
-    @classmethod
-    def search_by_category(cls, search_term):
-        gallery = cls.objects.filter(category__icontains=search_term)
-        return gallery
-
-    @classmethod
-    def filter_by_location(cls, id):
-        gallery = Image.objects.filter(location_id=id)
-        return gallery
+    image_category = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.post
+        return self.image_category
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+
+class Image(models.Model):
+
+    '''
+    Images model
+    '''
+
+    image_path = models.ImageField(upload_to='images/')
+    image_name = models.CharField(max_length=30, blank=False)
+    description = models.TextField(max_length=200, blank=True)
+    category = models.ForeignKey(Category)
+    location = models.ForeignKey(Location, blank=True)
+
+    def __str__(self):
+        return self.image_name
 
     def save_image(self):
         self.save()
 
     def delete_image(self):
         self.delete()
+
+    @classmethod
+    def get_all(cls):
+        images = cls.objects.all()
+        return images
+
+    @classmethod
+    def search_image(cls, search_category):
+        images = cls.objects.filter(
+            category__image_category__icontains=search_category)
+        return images
+
+    @classmethod
+    def filter_by_location(cls):
+        images = cls.objects.order_by('location')
+        return images

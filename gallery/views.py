@@ -1,46 +1,51 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, Http404
+from .models import Image, Location, Category
 
-from django.shortcuts import render
-from .models import Image
-import datetime as dt
 # Create your views here.
 
 
-def welcome(request):
-    return render(request, 'welcome.html')
+def index(request):
+    '''
+    view function to display landing page
+    '''
+
+    images = Image.objects.all()
+
+    return render(request, 'index.html', {"images": images})
 
 
-def gallery_of_day(request):
-    date = dt.date.today()
-    gallery = Image.get_all_images()
+def search_page(request):
+    '''
+    view function to open search page and display searched images
+    '''
 
-    return render(request, 'all-gallery/today-gallery.html', {'date': date, 'gallery': gallery})
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        images = Image.search_image(search_term)
+        message = f"{search_term}"
 
-
-def search_results(request):
-    if 'image' in request.GET and request.GET['image']:
-        search_term = request.GET.get('image')
-        searched_images = Image.search_by_category(search_term)
-        message = f'{search_term}'
-
-        return render(request, 'all-gallery/search.html', {'message': message, 'images': searched_images})
+        return render(request, 'search.html', {"message": message, "images": images})
 
     else:
-        # message = 'There are no results. Enter a search query.'
-
-        return render(request, 'all-gallery/search.html')
-
-
-def filter_by_location(request, location_id):
-    images = Image.filter_by_location(id=location_id)
-    return render(request, 'all-gallery/location.html', {'images': images})
+        message = "You haven't searched for any item"
+        return render(request, 'search.html', {"message": message})
 
 
-def convert_dates(dates):
-    day_number = dt.date.weekday(dates)
-    days = ['Monday', 'Tuesday', 'Wednesday',
-            'Thursday', 'Friday', 'Saturday', 'Sunday']
-    day = days[day_number]
+def sortby_locations(request):
+    '''
+    view function to display images sorted by Location
+    '''
 
-    return day
+    images = Image.filter_by_location()
+
+    return render(request, 'location.html', {"images": images})
+
+
+def single_image(request, image_id):
+    '''
+    view function to display a single image and its details
+    '''
+
+    image = Image.get_image_by_id(image_id)
+    return render(request, 'single_image.html', {"image": image})

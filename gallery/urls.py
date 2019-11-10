@@ -1,14 +1,14 @@
 from django.conf.urls import url
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from . import views
 
 urlpatterns = [
-    url('^$', views.welcome, name='welcome'),
-    url('^today/$', views.gallery_of_day, name='todaysGallery'),
-    url('^search/$', views.search_results, name='search_results'),
-    url(r'^location/(\d+)', views.filter_by_location, name='location')
+    url('^$', views.index, name='index'),
+    url(r'^search/', views.search_page, name='search_page'),
+    url(r'^image/(\d+)', views.single_image, name='single_image'),
+    url(r'^locations/sorted/$', views.sortby_locations, name='sortby_locations'),
 ]
 
 if settings.DEBUG:
-    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

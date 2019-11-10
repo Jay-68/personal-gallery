@@ -107,13 +107,3 @@ class ImageTestClass(TestCase):
         self.image_test.delete_image()
         images = Image.objects.all()
         self.assertTrue(len(images) == 0)
-
-    def test_get_image_by_id(self):
-        got_image = self.image_test.get_image_by_id(id)
-        image = Image.objects.filter(id=self.image_test.id)
-        self.assertTrue(len(got_image))
-
-    # def test_filter_image_by_location(self):
-    #     location = 'Kibra'
-    #     got_image = self.image_test.filter_by_location(location)
-    #     self.assertTrue(len(got_image)>1)

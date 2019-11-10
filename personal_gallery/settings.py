@@ -61,7 +61,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = 'd*@8pb4o-+@ycy*ppbb^lp4=emoxdf*t+j$8^jl1yq*==-h5wm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 

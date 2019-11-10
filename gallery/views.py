@@ -27,9 +27,9 @@ def search_results(request):
         return render(request, 'all-gallery/search.html', {'message': message, 'images': searched_images})
 
     else:
-        message = 'There are no results. Enter a search query.'
+        # message = 'There are no results. Enter a search query.'
 
-        return render(request, 'all-gallery/search.html', {'message': message})
+        return render(request, 'all-gallery/search.html')
 
 
 def filter_by_location(request, location_id):

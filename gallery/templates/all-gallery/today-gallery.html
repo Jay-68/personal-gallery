@@ -2,8 +2,7 @@
 {% block content %}
 {{ block.super}}
 
-<div class="container"
-  style="background-image: url(https://www.textures.com/system/gallery/photos/Plaster/Stucco/108984/ConcreteStucco0248_1_350.jpg);">
+<div class="container">
   <div class="row">
     <div class="col-md-12"><br><br>
       <h2 style="color: black;"><strong>View Location:</strong></h2>
@@ -13,8 +12,8 @@
     </div>
   </div>
 
+  {% for gallery in gallery %}
   <div class="row">
-    {% for gallery in gallery %}
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <h2 class="text-center" style="color: black;"> {{ gallery.post }} </h2>
       <img class="foto" data-toggle="modal" data-target="#myModal{{gallery.id}}" src="{{gallery.image.url}}"
@@ -52,5 +51,7 @@
 
   </div>
 </div>
+</div>
+
 
 {% endblock %}

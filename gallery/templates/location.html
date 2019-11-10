@@ -13,7 +13,10 @@
       <div class="card shad" style="width:auto;">
         <img class="card-img-top" id="img{{ image.id }}" src="{{image.image.url}}" width="100px" alt="Card image cap"
           data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
-
+        <h4 class="text-center">{{ image.image_name }}</h4>
+        <p class="text-center">
+          {{ image.image_description }}
+        </p>
 
 
         <!-- Modal -->
@@ -36,9 +39,10 @@
                 <p class="card-text">Image Category : {{image.category}}</p>
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
                   <input id="{{image.id}}-url" class="form-control form-control-sm input-md responsive" type="text"
-                    value="https://bran's gallery.herokuapp.com{{image.image.url}}">
+                    value="{{image.image.url}}">
                 </div>
-                <button type="button" class="btn btn-outline-dark btn-sm mt-2" onclick="copy('#{{image.id}}-url')">Copy image address</button>
+                <button type="button" class="btn btn-outline-dark btn-sm mt-2"
+                  onclick="copy('#{{image.id}}-url')">Ctrl+C</button>
 
               </div>
               <div class="modal-footer">
@@ -52,4 +56,4 @@
     {% endfor %}
   </div>
 </div>
- {% endblock %}
+{% endblock %}

@@ -33,7 +33,7 @@
                       <p class="card-text">Image Category : {{image.category}}</p>
                       <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
                         <input id="{{image.id}}-url" class="form-control form-control-sm input-md responsive" type="text"
-                          value="https://bran's gallery.herokuapp.com{{image.image.url}}">
+                          value="{{image.image.url}}">
                       </div>
                       <button type="button" class="btn btn-outline-dark btn-sm mt-2" onclick="copy('#{{image.id}}-url')">Copy
                         image address</button>

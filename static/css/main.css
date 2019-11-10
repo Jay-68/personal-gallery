@@ -1,3 +1,4 @@
-body{
-  margin: auto;
+.main{
+  background-image: url(https://images.pexels.com/photos/2087708/pexels-photo-2087708.jpeg?cs=srgb&dl=art-art-exhibition-art-gallery-2087708.jpg&fm=jpg);
+  height: 200px;
 }

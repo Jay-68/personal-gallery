@@ -1,48 +1,42 @@
 {% extends 'base.html'%} {% block content %}
 
-<hr>
-
 <div class="container">
-  <p class="text-center intro">Welcome to Bran's Gallery, the best in town and you'll wanna comment on it. The available
-    categories include:</p>
-  <p class="text-center ar">(Art, Photoshop and Food)</p>
+
 
 
   <div class="row">
 
     {% for image in images %}
 
-    <div class="col-md-3 image-box">
-      <div class="card  shad">
-        <img class="card-img-top " src="{{image.image.url}}" width="100px" alt="Card image cap" data-toggle="modal"
-          data-target="#{{ image.id }}">
-
-
-        <!-- Modal -->
-        <div class="modal fade animated fadeInUp" id="{{ image.id }}" tabindex="-1" role="dialog"
+    <div class="col-md-3 image-box pt-2">
+      <div class="card shad" style="width:auto;">
+        <img class="card-img-top" id="img{{ image.id }}" src="{{image.image.url}}" width="100px" alt="Card image cap"
+          data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
+        <div class="modal" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h3 class="modal-title text-center name" id="exampleModalLongTitle"> {{image.image_name}}</h3>
+                <h3 class="modal-title text-center text-center" id="exampleModalLongTitle"> {{image.image_name}}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body text-center">
-                <img class="card-img-top img-responsive" id="img{{image.id}}" src="{{image.image.url}}" width="150px"
-                  height="100px" alt="Card image cap">
-                <p class="card-text photo ">Photo description : {{image.image_description}}.</p>
-                <p class="card-text shot">Shot in : {{image.location}}</p>
-                <p class="card-text cate">Category : {{image.category}}</p>
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
-                  <input id="{{image.id}}-url" class="form-control input-md responsive" type="text"
+                <img class="card-img-top" id="img{{image.id}}" src="{{image.image.url}}" width="150px"
+                  alt="Card image cap">
+                <p class="card-text"> Description : {{image.image_description}}.</p>
+                <p class="card-text">Location : {{image.location}}</p>
+                <p class="card-text">Image Category : {{image.category}}</p>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
+                  <input id="{{image.id}}-url" class="form-control form-control-sm input-md responsive" type="text"
                     value="https://bran's gallery.herokuapp.com{{image.image.url}}">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="copy('#{{image.id}}-url')">Copy Link</button>
+                <button type="button" class="btn btn-outline-dark btn-sm mt-2" onclick="copy('#{{image.id}}-url')">Copy
+                  image address</button>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -50,12 +44,6 @@
       </div>
     </div>
     {% endfor %}
-
   </div>
 </div>
-<hr>
-
-
-
-
-<hr> {% endblock %}
+{% endblock %}

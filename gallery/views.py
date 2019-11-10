@@ -24,8 +24,7 @@ def search_results(request):
                       {'images': images, 'message': message, 'categories': categories,
                        "locations": locations})
     else:
-        message = 'You havent searched yet'
-        return render(request, 'search.html', {"message": message})
+        return render(request, 'search.html')
 
 
 def get_image_by_location(request, location_name):

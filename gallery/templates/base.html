@@ -3,52 +3,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8"> {% if title %}
-    <title>Welcome | Gallery - {{title}}</title>
-    {% else %}
-    <title> Welcome | Gallery </title>
-    {% endif %} {% block styles %} {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <meta charset="utf-8">
+  <title>Personal Gallery</title>
+ {% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    <!-- bootstrap css -->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Josefin+Slab|Open+Sans+Condensed:300|Yanone+Kaffeesatz&display=swap" rel="stylesheet">{% endblock %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  {% endblock %}
 </head>
 
 <body class="back">
-    {% include "navbar.html" %}
-    <div class="container">
-        {% block content %}{% endblock %} {% block scripts %}
-        <script type="text/javascript" src="{{ STATIC_URL }} /static/js/jquery-3.4.1.js">
-        </script>
-        <script type="text/javascript" src="{{ STATIC_URL }} /static/js/scripts.js">
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        {% bootstrap_javascript %} {% endblock %}
-    </div>
-
-
-
-    <script>
-        function copy(element) {
-            $(element).select();
-            document.execCommand("copy");
-        }
+  {% include "navbar.html" %}
+  <div class="container">
+    {% block content %}{% endblock %} {% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }} /static/js/jquery-3.4.1.js">
     </script>
-
-    <footer class="page-footer">
-
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 sticky-bottom foot">Created by BranTech © 2019 Copyright:
-
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-</body>
+    <script type="text/javascript" src="{{ STATIC_URL }} /static/js/scripts.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    {% bootstrap_javascript %} {% endblock %}
+  </div>
 
 </html>

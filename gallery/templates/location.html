@@ -1,8 +1,8 @@
 {% extends 'base.html'%} {% block content %}
 
-<hr>
+
 <div class="container text-center">
-  <h3 class="intro">Pictures shot in {{location}} </h3>
+  <h3 class="intro">Explore {{location}} </h3>
 
 </div>
 <div class="container">
@@ -17,12 +17,12 @@
 
 
         <!-- Modal -->
-        <div class="modal fade animated fadeInUp" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog"
+        <div class="modal" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h3 class="modal-title text-center name" id="exampleModalLongTitle"> {{image.image_name}}</h3>
+                <h3 class="modal-title text-center text-center" id="exampleModalLongTitle"> {{image.image_name}}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -31,18 +31,18 @@
 
                 <img class="card-img-top" id="img{{image.id}}" src="{{image.image.url}}" width="150px"
                   alt="Card image cap">
-                <p class="card-text photo">Photo description : {{image.image_description}}.</p>
-                <p class="card-text shot">Shot in : {{image.location}}</p>
-                <p class="card-text cate">Category : {{image.category}}</p>
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
-                  <input id="{{image.id}}-url" class="form-control input-md responsive" type="text"
+                <p class="card-text"> Description : {{image.image_description}}.</p>
+                <p class="card-text">Location : {{image.location}}</p>
+                <p class="card-text">Image Category : {{image.category}}</p>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center">
+                  <input id="{{image.id}}-url" class="form-control form-control-sm input-md responsive" type="text"
                     value="https://bran's gallery.herokuapp.com{{image.image.url}}">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="copy('#{{image.id}}-url')">Copy Link</button>
+                <button type="button" class="btn btn-outline-dark btn-sm mt-2" onclick="copy('#{{image.id}}-url')">Copy image address</button>
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -52,4 +52,4 @@
     {% endfor %}
   </div>
 </div>
-<hr> {% endblock %}
+ {% endblock %}

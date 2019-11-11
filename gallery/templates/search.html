@@ -1,8 +1,5 @@
 {% extends 'base.html'%} {% block content %}
 
-
-
-
 <div class="container text-center">
     {% if images %}
     <h5>Found {{ images|length }} of search term {{message}}</h5>
@@ -13,12 +10,8 @@
 
 <div class="container">
     <div class="row">
-
-
         {% for image in images %}
         <div class="col-md-4">
-
-
 
             <div class="card" style="width:auto;">
                 <img class="card-img-top" id="img{{ image.id }}" src="{{image.image.url}}" alt="Card image cap" data-toggle="modal" data-target="#myModal{{ forloop.counter }}">

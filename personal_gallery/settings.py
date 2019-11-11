@@ -17,15 +17,6 @@ import dotenv
 from decouple import config, Csv
 
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'gallery',
-            'USER': 'moringa',
-            'PASSWORD': 'Access',
-        }
-
-    }
 
 
 
@@ -43,7 +34,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd*@8pb4o-+@ycy*ppbb^lp4=emoxdf*t+j$8^jl1yq*==-h5wm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -98,6 +89,16 @@ WSGI_APPLICATION = 'personal_gallery.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gallery',
+        'USER': 'moringa',
+        'PASSWORD': 'Access'
+    }
+}
 
 
 

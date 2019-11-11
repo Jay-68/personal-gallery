@@ -2,57 +2,50 @@
 
 <hr>
 <div class="container text-center">
-  <h3 class="text-center">Explore {{location}} </h3>
+    <h3 class="text-center">Explore {{location}} </h3>
 
 </div>
 <div class="container">
-  <div class="row">
+    <div class="row">
 
-    {% for image in location_images %}
-    <div class="col-md-3 image-box">
-      <div class="card" style="width:auto;">
-        <img class="card-img-top" id="img{{ image.id }}" src="{{image.image.url}}" width="100px" alt="Card image cap"
-          data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
-          <p class="text-center pt-2 font-weight-bold">
-            {{ image.image_name }}
-          </p>
-          <p class="text-center">
-            {{ image.image_description }}
-          </p>
-        <!-- Modal -->
-        <div class="modal modal-sm mx-auto" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title text-center" id="exampleModalLongTitle"> {{image.image_name}}</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body text-center">
+        {% for image in location_images %}
+        <div class="col-md-3 image-box">
+            <div class="card shad" style="width:auto;">
+                <img class="card-img-top" id="img{{ image.id }}" src="{{image.image.url}}" width="100px" alt="Card image cap" data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
 
-                <img class="card-img-top img-responsive" id="img{{image.id}}" src="{{image.image.url}}" width="150px"
-                  alt="Card image cap">
-                <p class="card-text photo">Description : {{image.image_description}}.</p>
-                <p class="card-text shot">Location : {{image.location}}</p>
-                <p class="card-text cate">Category : {{image.category}}</p>
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
-                  <input id="{{image.id}}-url" class="form-control input-md responsive" type="text"
-                    value="{{image.image.url}}">
+
+
+                <!-- Modal -->
+                <div class="modal fade animated fadeInUp" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title text-center name" id="exampleModalLongTitle"> {{image.image_name}}</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                            </div>
+                            <div class="modal-body text-center">
+
+                                <img class="card-img-top" id="img{{image.id}}" src="{{image.image.url}}" width="150px" alt="Card image cap">
+                                <p class="card-text photo">Description : {{image.image_description}}.</p>
+                                <p class="card-text shot">Location : {{image.location}}</p>
+                                <p class="card-text cate">Category : {{image.category}}</p>
+                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
+                                    <input id="{{image.id}}-url" class="form-control input-md responsive" type="text" value="{{image.image.url}}">
+                                </div>
+                                <button type="button" class="btn btn-outline-dark mt-2" onclick="copy('#{{image.id}}-url')">Copy</button>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-dark btn-sm mt-2" onclick="copy('#{{image.id}}-url')">Copy</button>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-  </div>
 </div>
 <hr> {% endblock %}

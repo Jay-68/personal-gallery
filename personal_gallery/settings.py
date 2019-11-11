@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import django_heroku
 import dj_database_url
-import dotenv
 from decouple import config, Csv
 
 
@@ -88,8 +87,8 @@ WSGI_APPLICATION = 'personal_gallery.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gallery',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pictures',
         'USER': 'moringa',
         'PASSWORD': 'Access'
     }

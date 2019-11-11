@@ -1,41 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand" href="{% url 'photos'%}">Personal Gallery</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top cool">
+  <a class="navbar-brand " id="gal" href="{% url 'photos'%}">Personal Gallery</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Filter by Locations
-        </a>
-        <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdown">
-          {% for location in locations %}
-          <a class="dropdown-item" href="{% url 'location' location_name=location.location_name %}">
-            <p>{{location.location_name}}</p>
-          </a>
-          {% endfor %}
-        </div>
-      </li>
-    </ul>
-    <!-- Adding a search form  -->
-    <div class="col-sm-4 col-md-4 navbar-right">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle location" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Locations
+            </a>
+              <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdown">
+                  {% for location in locations %}
+                  <a class="dropdown-item" href="{% url 'location' location_name=location.location_name %}">
+                      <p>{{location.location_name}}</p>
+                  </a>
+                  {% endfor %}
+              </div>
+          </li>
+      </ul>
+      <!-- Adding a search form  -->
+      <div class="col-sm-4 col-md-4 navbar-right">
 
-      <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
+          <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
 
-        <div class="input-group">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search Categories" aria-label="Search">
-          <div class="input-group-btn">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </div>
+              <div class="input-group">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search Category" aria-label="Search">
+                  <div class="input-group-btn">
+                      <button class="btn btn-outline-success my-2 my-sm-0" id="rat" type="submit">Search</button>
+                  </div>
 
-        </div>
+              </div>
 
-      </form>
-    </div>
-    <!-- search form end -->
+          </form>
+      </div>
+      <!-- search form end -->
   </div>
 </nav>

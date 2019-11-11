@@ -9,6 +9,8 @@ The Personal gallery application has images displayed with their titles. Clickin
 
 https://gallery68.herokuapp.com/
 
+![Live page Image](/images/gallery.png)
+
 ## BDD
 
 | Behavior            | Input                         | Output                        | 

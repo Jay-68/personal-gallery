@@ -42,10 +42,10 @@ class Category(models.Model):
     
 class Image(models.Model):
     image_name = models.CharField(max_length=20)
-    image_description = models.TextField(max_length=60)
+    image_description = models.TextField(max_length=120)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to = 'pics')
+    image = models.ImageField(upload_to = 'media/')
     
     def __str__(self):
         return self.image_name
@@ -81,6 +81,6 @@ class Image(models.Model):
         return locations
     
     @classmethod
-    def search_by_category(cls,location):
+    def search_by_category(cls,search_term):
         photos=cls.objects.filter(category__icontains=search_term)
         return photos

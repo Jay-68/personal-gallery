@@ -10,9 +10,15 @@
 
     {% for image in location_images %}
     <div class="col-md-3 image-box">
-      <div class="card shad" style="width:auto;">
+      <div class="card" style="width:auto;">
         <img class="card-img-top" id="img{{ image.id }}" src="{{image.image.url}}" width="100px" alt="Card image cap"
           data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
+          <p class="text-center pt-2 font-weight-bold">
+            {{ image.image_name }}
+          </p>
+          <p class="text-center">
+            {{ image.image_description }}
+          </p>
         <!-- Modal -->
         <div class="modal modal-sm mx-auto" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -28,7 +34,7 @@
 
                 <img class="card-img-top img-responsive" id="img{{image.id}}" src="{{image.image.url}}" width="150px"
                   alt="Card image cap">
-                <p class="card-text photo">description : {{image.image_description}}.</p>
+                <p class="card-text photo">Description : {{image.image_description}}.</p>
                 <p class="card-text shot">Location : {{image.location}}</p>
                 <p class="card-text cate">Category : {{image.category}}</p>
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">

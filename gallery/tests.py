@@ -1,45 +1,45 @@
 from django.test import TestCase
-from .models import location, Category, Image
+from .models import Location, Category, Image
 
 
 # Create your tests here.
 
-class locationTestClass(TestCase):
+class LocationTestClass(TestCase):
     # Set up method
     def setUp(self):
-        self.location = location(location='Kibra')
+        self.location = Location(location_name='Tokyo')
 
     def tearDown(self):
 
-        location.objects.all().delete()
+        Location.objects.all().delete()
 
     # Testing instance
 
     def test_instances(self):
-        self.assertTrue(isinstance(self.location, location))
+        self.assertTrue(isinstance(self.location, Location))
 
     # Test for saving method
     def test_save_location(self):
         self.location.save_location()
-        locations = location.objects.all()
+        locations = Location.objects.all()
         self.assertFalse(len(locations) > 0)
 
     # Test for updating location
     def test_update_location(self):
-        new_location = 'Compton'
-        self.location.update_location(self.location.id, new_location)
-        updated_location = location.objects.filter(location='Compton')
+        new_location_name = 'Japan'
+        self.location.update_location(self.location.id, new_location_name)
+        updated_location = Location.objects.filter(location_name='Japan')
         self.assertFalse(len(updated_location) > 0)
 
     def test_delete_location(self):
         self.location.delete_location()
-        location = location.objects.all()
+        location = Location.objects.all()
         self.assertTrue(len(location) == 0)
 
 
 class CategoryTestClass(TestCase):
     def setUp(self):
-        self.category = Category(category_name='creativity')
+        self.category = Category(category_name='Anime')
 
     def tearDown(self):
 
@@ -73,10 +73,10 @@ class CategoryTestClass(TestCase):
 
 class ImageTestClass(TestCase):
     def setUp(self):
-        self.location = location(location='kibra')
+        self.location = Location(location_name='Tokyo')
         self.location.save()
 
-        self.category = Category(category_name='creativity')
+        self.category = Category(category_name='Anime')
         self.category.save()
 
         self.image_test = Image(image_name='image_test', image_description='This is a test image',
@@ -87,7 +87,7 @@ class ImageTestClass(TestCase):
 
     def tearDown(self):
         Image.objects.all().delete()
-        location.objects.all().delete()
+        Location.objects.all().delete()
         Category.objects.all().delete()
 
     def test_save_image(self):
@@ -107,3 +107,8 @@ class ImageTestClass(TestCase):
         self.image_test.delete_image()
         images = Image.objects.all()
         self.assertTrue(len(images) == 0)
+
+    def test_get_image_by_id(self):
+        got_image = self.image_test.get_image_by_id(id)
+        image = Image.objects.filter(id=self.image_test.id)
+        self.assertTrue(len(got_image))

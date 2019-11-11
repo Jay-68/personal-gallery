@@ -11,7 +11,7 @@
         {% for image in location_images %}
         <div class="col-md-3 image-box">
             <div class="card shad" style="width:auto;">
-                <img class="card-img-top img-responsive" id="img{{ image.id }}" src="{{image.image.url}}" width="100px" alt="Card image cap" data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
+                <img class="card-img-top img-responsive" id="img{{ image.id }}" src="{{image.image.url}}"  width="100px" height="200px" alt="Card image cap" data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
                 <p class="text-center font-weight-bold">
                   {{ image.image_name }}
                 </p>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="modal-body text-center">
 
-                                <img class="card-img-top" id="img{{image.id}}" src="{{image.image.url}}" width="150px" alt="Card image cap">
+                                <img class="card-img-top" id="img{{image.id}}" src="{{image.image.url}}" height="160px" alt="Card image cap">
                                 <p class="card-text photo">Description : {{image.image_description}}.</p>
                                 <p class="card-text shot">Location : {{image.location}}</p>
                                 <p class="card-text cate">Category : {{image.category}}</p>

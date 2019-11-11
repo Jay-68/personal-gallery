@@ -61,7 +61,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = 'd*@8pb4o-+@ycy*ppbb^lp4=emoxdf*t+j$8^jl1yq*==-h5wm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -115,6 +115,15 @@ WSGI_APPLICATION = 'personal_gallery.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gallery',
+        'USER': 'moringa',
+        'PASSWORD': 'Access'
+    }
+}
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)

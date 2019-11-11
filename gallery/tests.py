@@ -1,39 +1,39 @@
 from django.test import TestCase
-from .models import Location, Category, Image
+from .models import location, Category, Image
 
 
 # Create your tests here.
 
-class LocationTestClass(TestCase):
+class locationTestClass(TestCase):
     # Set up method
     def setUp(self):
-        self.location = Location(location_name='Kibra')
+        self.location = location(location='Kibra')
 
     def tearDown(self):
 
-        Location.objects.all().delete()
+        location.objects.all().delete()
 
     # Testing instance
 
     def test_instances(self):
-        self.assertTrue(isinstance(self.location, Location))
+        self.assertTrue(isinstance(self.location, location))
 
     # Test for saving method
     def test_save_location(self):
         self.location.save_location()
-        locations = Location.objects.all()
+        locations = location.objects.all()
         self.assertFalse(len(locations) > 0)
 
     # Test for updating location
     def test_update_location(self):
-        new_location_name = 'Compton'
-        self.location.update_location(self.location.id, new_location_name)
-        updated_location = Location.objects.filter(location_name='Compton')
+        new_location = 'Compton'
+        self.location.update_location(self.location.id, new_location)
+        updated_location = location.objects.filter(location='Compton')
         self.assertFalse(len(updated_location) > 0)
 
     def test_delete_location(self):
         self.location.delete_location()
-        location = Location.objects.all()
+        location = location.objects.all()
         self.assertTrue(len(location) == 0)
 
 
@@ -73,7 +73,7 @@ class CategoryTestClass(TestCase):
 
 class ImageTestClass(TestCase):
     def setUp(self):
-        self.location = Location(location_name='kibra')
+        self.location = location(location='kibra')
         self.location.save()
 
         self.category = Category(category_name='creativity')
@@ -87,7 +87,7 @@ class ImageTestClass(TestCase):
 
     def tearDown(self):
         Image.objects.all().delete()
-        Location.objects.all().delete()
+        location.objects.all().delete()
         Category.objects.all().delete()
 
     def test_save_image(self):

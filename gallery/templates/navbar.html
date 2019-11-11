@@ -8,9 +8,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle location" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          Filter by Location
+          Filter by Locations
         </a>
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdown">
           {% for location in locations %}
@@ -27,7 +27,7 @@
       <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
 
         <div class="input-group">
-          <input class="form-control mr-sm-2" type="search" placeholder="Explore Gallery" aria-label="Search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Categories" aria-label="Search">
           <div class="input-group-btn">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </div>
